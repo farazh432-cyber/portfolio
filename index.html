@@ -12,7 +12,6 @@
             --bg-dark-red: #4a0000;
             --card-bg: rgba(0, 0, 0, 0.6);
             --text-main: #ffffff;
-            --music-green: #2ecc71;
         }
 
         body {
@@ -43,11 +42,10 @@
 
         /* THE 3D STEVE EFFECT */
         .profile-img {
-            width: 250px; /* Big and bold like SliceHosting */
+            width: 250px; 
             height: auto;
             margin-bottom: -10px; 
-            /* High-quality 3D shadows */
-            filter: drop-shadow(0 0 20px rgba(255, 75, 43, 0.4)) drop-shadow(0 15px 25px rgba(0, 0, 0, 0.8));
+            filter: drop-shadow(0 0 20px rgba(255, 75, 43, 0.5)) drop-shadow(0 15px 25px rgba(0, 0, 0, 0.8));
             animation: float3D 4s ease-in-out infinite;
             object-fit: contain;
             position: relative;
@@ -58,15 +56,12 @@
             font-size: 3.5rem;
             margin: 10px 0;
             text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
-            position: relative;
-            z-index: 5;
         }
 
         .badge-container {
             display: flex;
             justify-content: center;
             gap: 15px;
-            flex-wrap: wrap;
             margin-top: 20px;
         }
 
@@ -75,33 +70,8 @@
             padding: 10px 20px;
             border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: 0.3s;
+            backdrop-filter: blur(10px);
             font-weight: bold;
-            backdrop-filter: blur(10px);
-        }
-
-        .badge:hover {
-            background: var(--primary-red);
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4);
-        }
-
-        #music-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: rgba(0, 0, 0, 0.9);
-            border: 2px solid var(--primary-red);
-            padding: 12px 24px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            z-index: 9999;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            backdrop-filter: blur(10px);
         }
 
         .coming-soon {
@@ -118,7 +88,6 @@
             padding: 15px;
             border-radius: 10px;
             background: rgba(255,255,255,0.05);
-            transition: 0.3s;
         }
 
         .btn {
@@ -130,8 +99,8 @@
             background: var(--primary-red);
             border-radius: 12px;
             font-weight: bold;
-            transition: 0.3s;
             box-shadow: 0 4px 0px #a32a15;
+            transition: 0.3s;
         }
 
         @keyframes float3D { 
@@ -143,30 +112,18 @@
 
         footer {
             margin-top: 50px;
-            padding-bottom: 30px;
             opacity: 0.7;
         }
     </style>
 </head>
 <body>
 
-<audio id="bg-music" loop preload="metadata">
-    <source src="https://files.catbox.moe/uihhgv.mp3" type="audio/mpeg">
-</audio>
-
-<div id="music-toggle" onclick="toggleMusic()">
-    <div style="width: 30px; height: 30px; background: var(--primary-red); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-        <i id="music-icon" class="fas fa-play" style="font-size: 0.8rem; margin-left: 2px;"></i>
-    </div>
-    <span id="music-status" style="font-weight: 800; font-size: 0.85rem; text-transform: uppercase;">Play Song</span>
-</div>
-
 <div class="container">
     <div class="hero">
-        <img src="https://instasize-image-processing.s3.amazonaws.com/0c9ee0945e0879a228d1521b541b2a0ccd7387e440099056b803f0149441bc25.png" alt="Steve 3D" class="profile-img">
+        <img src="png-clipart-minecraft-pocket-edition-video-games-coloring-book-teen-gaming-night-minecraft-character-game-child-thumbnail.png" alt="Steve 3D" class="profile-img">
         
         <h1>Classical_Ladder</h1>
-        <p style="font-weight: bold; font-size: 1.2rem; opacity: 0.9;">Web Developer • YouTube Creator • MC Specialist</p>
+        <p style="font-weight: bold; font-size: 1.2rem;">Web Developer • YouTube Creator • MC Specialist</p>
         
         <div class="badge-container">
             <div class="badge"><i class="fas fa-code"></i> Developer</div>
@@ -176,46 +133,27 @@
     </div>
 
     <div class="coming-soon">
-        <i class="fas fa-folder-open" style="font-size: 2rem; color: var(--primary-red); margin-bottom: 10px;"></i>
         <h3>My Projects</h3>
         <div class="project">
-            <h4><i class="fab fa-discord"></i> Discord Moderation</h4>
-            <p>Managing communities with professional tools and custom scripts.</p>
+            <h4>Galaxy Cash Bot</h4>
+            <p>A custom-built Discord economy bot inspired by OWO.</p>
         </div>
         <div class="project">
-            <h4><i class="fas fa-robot"></i> Galaxy Cash Bot</h4>
-            <p>Economy bot featuring advanced rewards and automation.</p>
+            <h4>Galacious SMP</h4>
+            <p>Custom Minecraft SMP with unique gameplay features.</p>
         </div>
     </div>
 
-    <div style="margin-top: 50px; background: rgba(0, 0, 0, 0.8); padding: 40px; border-radius: 25px; border: 1px solid var(--primary-red); backdrop-filter: blur(20px);">
-        <h2 style="color: var(--primary-red); margin-top: 0;">Contact Me</h2>
-        <a href="https://youtube.com/@classical_ladder" target="_blank" class="btn"><i class="fab fa-youtube"></i> YouTube</a>
-        <div class="btn" style="background: #5865F2;"><i class="fab fa-discord"></i> shadow_devs.</div>
+    <div style="margin-top: 50px; background: rgba(0, 0, 0, 0.8); padding: 40px; border-radius: 25px; border: 1px solid var(--primary-red);">
+        <h2 style="color: var(--primary-red);">Contact Me</h2>
+        <a href="https://youtube.com/@classical_ladder" class="btn">YouTube Channel</a>
+        <div class="btn" style="background: #5865F2;">Discord: shadow_devs.</div>
     </div>
 
     <footer>
-        <p>© 2026 Classical_Ladder | Web Dev</p>
+        <p>© 2026 Classical_Ladder</p>
     </footer>
 </div>
-
-<script>
-    const music = document.getElementById('bg-music');
-    const icon = document.getElementById('music-icon');
-    const statusText = document.getElementById('music-status');
-
-    function toggleMusic() {
-        if (music.paused) {
-            music.play();
-            icon.classList.replace('fa-play', 'fa-pause');
-            statusText.innerText = "Now Playing";
-        } else {
-            music.pause();
-            icon.classList.replace('fa-pause', 'fa-play');
-            statusText.innerText = "Music Paused";
-        }
-    }
-</script>
 
 </body>
 </html>
