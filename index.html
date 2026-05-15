@@ -1,161 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Classical Ladder | DC Developer</title>
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
-    body{background:linear-gradient(135deg,#0c0c0c 0%,#1a1a2e 50%,#16213e 100%);color:#fff;overflow-x:hidden}
-    .container{max-width:1200px;margin:0 auto;padding:20px}
-    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at center,#00d4ff20 0%,transparent 70%);animation:pulse 4s ease-in-out infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.8}}
-    h1{font-size:clamp(3rem,8vw,7rem);font-weight:900;background:linear-gradient(45deg,#00d4ff,#ff6b6b,#4ecdc4);background-size:300% 300%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradient 3s ease infinite}
-    @keyframes gradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-    .subtitle{font-size:clamp(1.2rem,3vw,2rem);margin:20px 0;color:#b8b8b8;animation:float 6s ease-in-out infinite}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-    .btn{display:inline-block;padding:15px 40px;background:linear-gradient(45deg,#00d4ff,#0099cc);border:none;border-radius:50px;font-size:1.2rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;text-decoration:none;color:#fff;box-shadow:0 10px 30px rgba(0,212,255,0.3)}
-    .btn:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,212,255,0.4)}
-    section{min-height:80vh;padding:80px 20px;display:flex;align-items:center}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
-    .card{background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:30px;transition:all 0.4s ease;cursor:pointer}
-    .card:hover{transform:translateY(-15px) scale(1.02);background:rgba(255,255,255,0.1);box-shadow:0 30px 60px rgba(0,0,0,0.5)}
-    .skills-bar{background:rgba(255,255,255,0.1);height:10px;border-radius:10px;overflow:hidden;margin:10px 0}
-    .skills-progress{height:100%;background:linear-gradient(90deg,#00d4ff,#ff6b6b);border-radius:10px;transition:width 2s ease}
-    .particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1}
-    .particle{position:absolute;background:radial-gradient(circle,#00d4ff20,#ff6b6b10);border-radius:50%;animation:float 15s linear infinite}
-    @keyframes float{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh) rotate(360deg);opacity:0}}
-    .contact-form{max-width:600px;margin:0 auto}
-    input,textarea{width:100%;padding:15px;border:1px solid rgba(255,255,255,0.2);border-radius:10px;background:rgba(255,255,255,0.05);color:#fff;font-size:1rem;margin-bottom:20px;transition:all 0.3s}
-    input:focus,textarea:focus{outline:none;border-color:#00d4ff;box-shadow:0 0 20px rgba(0,212,255,0.3)}
-    ::placeholder{color:#888}
-    @media(max-width:768px){.container{padding:10px}.hero{padding:20px}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classical_Ladder Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #ff4b2b;
+            --bg-red-glow: #b22222; 
+            --bg-dark-red: #4a0000;
+            --card-bg: rgba(0, 0, 0, 0.6);
+            --text-main: #ffffff;
+            --music-green: #2ecc71;
+            --discord-blue: #5865F2;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle, var(--bg-red-glow) 0%, var(--bg-dark-red) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            overflow-x: hidden;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .hero {
+            animation: fadeIn 1.5s ease-out;
+            margin-bottom: 50px;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+            animation: float 3s ease-in-out infinite;
+            object-fit: contain;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 10px 0;
+            text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .badge {
+            background: var(--card-bg);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: 0.3s;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge:hover {
+            background: var(--primary-red);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4);
+        }
+
+        /* --- MUSIC PLAYER PILL --- */
+        #music-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid var(--primary-red);
+            padding: 12px 24px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            z-index: 9999;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        #music-toggle:hover {
+            transform: scale(1.05) translateY(-5px);
+            border-color: white;
+        }
+
+        .music-btn-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .music-text {
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .playing-pulse {
+            animation: pulse 1.5s infinite;
+            background: var(--music-green) !important;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0px rgba(46, 204, 113, 0.7); }
+            100% { box-shadow: 0 0 0 15px rgba(46, 204, 113, 0); }
+        }
+
+        /* --- CONTENT BOXES --- */
+        .coming-soon {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+        }
+
+        .contact-box {
+            margin-top: 50px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid var(--primary-red);
+            backdrop-filter: blur(20px);
+        }
+
+        /* --- ANIMATED BUTTONS --- */
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            text-decoration: none;
+            color: #fff;
+            background: var(--primary-red);
+            border-radius: 12px;
+            font-weight: bold;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 0px #a32a15;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            filter: brightness(1.1);
+            box-shadow: 0 10px 20px rgba(255, 75, 43, 0.5);
+        }
+
+        .btn:active {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 0px #a32a15;
+        }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer {
+            margin-top: 50px;
+            padding-bottom: 30px;
+            opacity: 0.7;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
 <body>
-  <div id="root"></div>
-  <div id="particles" class="particles"></div>
 
-  <script type="text/babel">
-    const { useState, useEffect } = React;
+<audio id="bg-music" loop preload="metadata">
+    <source src="https://files.catbox.moe/uihhgv.mp3" type="audio/mpeg">
+</audio>
 
-    // Animated Particles
-    function Particles() {
-      useEffect(() => {
-        const particlesContainer = document.getElementById('particles');
-        const createParticle = () => {
-          const particle = document.createElement('div');
-          particle.className = 'particle';
-          const size = Math.random() * 6 + 2;
-          particle.style.width = particle.style.height = size + 'px';
-          particle.style.left = Math.random() * 100 + '%';
-          particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-          particle.style.animationDelay = Math.random() * 5 + 's';
-          particlesContainer.appendChild(particle);
-          setTimeout(() => particle.remove(), 25000);
-        };
-        const interval = setInterval(createParticle, 800);
-        return () => clearInterval(interval);
-      }, []);
-      return null;
-    }
+<div id="music-toggle" onclick="toggleMusic()" onmouseover="primeMusic()">
+    <div class="music-btn-icon" id="music-icon-bg">
+        <i id="music-icon" class="fas fa-play" style="font-size: 0.8rem; margin-left: 2px;"></i>
+    </div>
+    <span class="music-text" id="music-status">Play Song</span>
+</div>
 
-    // Main App
-    function App() {
-      const [activeTab, setActiveTab] = useState('home');
-
-      return (
-        <div>
-          <Particles />
-          
-          {/* Hero */}
-          <section className="hero">
-            <div className="container">
-              <h1>Classical Ladder</h1>
-              <p className="subtitle">DC Developer | Web Developer | Full-Stack Architect</p>
-              <a href="#contact" className="btn">Get In Touch</a>
-            </div>
-          </section>
-
-          {/* Services */}
-          <section id="services">
-            <div className="container">
-              <h2 style={{textAlign:'center',fontSize:'3rem',marginBottom:'60px',background:'linear-gradient(45deg,#00d4ff,#ff6b6b)',WebkitBackgroundClip:'text',backgroundClip:'text',WebkitTextFillColor:'transparent'}}>
-                What I Do
-              </h2>
-              <div className="grid">
-                <div className="card">
-                  <h3 style={{fontSize:'1.8rem',marginBottom:'20px',color:'#00d4ff'}}>DC Development</h3>
-                  <p>Custom Discord bots, automation tools, and server management solutions.</p>
-                </div>
-                <div className="card">
-                  <h3 style={{fontSize:'1.8rem',marginBottom:'20px',color:'#ff6b6b'}}>Web Development</h3>
-                  <p>Modern, responsive websites and web applications with cutting-edge tech.</p>
-                </div>
-                <div className="card">
-                  <h3 style={{fontSize:'1.8rem',marginBottom:'20px',color:'#4ecdc4'}}>Full-Stack</h3>
-                  <p>Complete solutions from frontend UI to robust backend systems.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Skills */}
-          <section id="skills" style={{background:'rgba(0,0,0,0.3)'}}>
-            <div className="container">
-              <h2 style={{textAlign:'center',fontSize:'3rem',marginBottom:'60px',background:'linear-gradient(45deg,#00d4ff,#ff6b6b)',WebkitBackgroundClip:'text',backgroundClip:'text',WebkitTextFillColor:'transparent'}}>
-                Skills
-              </h2>
-              <div className="grid">
-                <div className="card">
-                  <h3 style={{fontSize:'1.8rem',marginBottom:'20px'}}>React / Next.js</h3>
-                  <div className="skills-bar"><div className="skills-progress" style={{width:'95%'}}></div></div>
-                </div>
-                <div className="card">
-                  <h3 style={{fontSize:'1.8rem',marginBottom:'20px'}}>Node.js</h3>
-                  <div className="skills-bar"><div className="skills-progress" style={{width:'90%'}}></div></div>
-                </div>
-                <div className="card">
-                  <h3 style={{fontSize:'1.8rem',marginBottom:'20px'}}>Discord.js</h3>
-                  <div className="skills-bar"><div className="skills-progress" style={{width:'92%'}}></div></div>
-                </div>
-                <div className="card">
-                  <h3 style={{fontSize:'1.8rem',marginBottom:'20px'}}>TypeScript</h3>
-                  <div className="skills-bar"><div className="skills-progress" style={{width:'88%'}}></div></div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Contact */}
-          <section id="contact">
-            <div className="container">
-              <h2 style={{textAlign:'center',fontSize:'3rem',marginBottom:'60px',background:'linear-gradient(45deg,#00d4ff,#ff6b6b)',WebkitBackgroundClip:'text',backgroundClip:'text',WebkitTextFillColor:'transparent'}}>
-                Let's Work Together
-              </h2>
-              <form className="contact-form">
-                <input type="text" placeholder="Your Name" required />
-                <input type="email" placeholder="Your Email" required />
-                <textarea rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit" className="btn" style={{width:'100%',fontSize:'1.3rem'}}>Send Message</button>
-              </form>
-              <div style={{textAlign:'center',marginTop:'40px'}}>
-                <p style={{color:'#b8b8b8',fontSize:'1.2rem'}}>
-               Classical laddder | 🐦 @classicalladder
-                </p>
-              </div>
-            </div>
-          </section>
+<div class="container">
+    <div class="hero">
+        <img src="https://mcicons.ccleaf.com/assets/20.%20Blocks/18.%20Decoration/Ladder.png" alt="Ladder" class="profile-img">
+        <h1>Classical_Ladder</h1>
+        <p style="font-weight: bold; font-size: 1.2rem;">Web Developer • YouTube Creator • MC Specialist</p>
+        
+        <div class="badge-container">
+            <div class="badge"><i class="fas fa-code"></i> Developer</div>
+            <div class="badge"><i class="fas fa-cube"></i> Minecraft</div>
+            <div class="badge"><i class="fab fa-youtube"></i> YouTuber</div>
         </div>
-      );
+    </div>
+
+    <div class="coming-soon">
+        <i class="fas fa-hammer" style="font-size: 2rem; color: var(--primary-red); margin-bottom: 10px;"></i>
+        <h3>Project Lab in Progress</h3>
+        <p>Building high-end web tools and Minecraft utilities. Check back soon!</p>
+    </div>
+
+    <div class="contact-box">
+        <h2 style="color: var(--primary-red); margin-top: 0;">Contact Me</h2>
+        <a href="https://youtube.com/@classical_ladder" target="_blank" class="btn"><i class="fab fa-youtube"></i> YouTube Channel</a>
+        <div class="btn" style="background: #5865F2; cursor: pointer;"><i class="fab fa-discord"></i> Discord: shadow_devs</div>
+    </div>
+
+    <footer>
+        <p>© 2026 Classical_Ladder | Dev</p>
+    </footer>
+</div>
+
+<script>
+    const music = document.getElementById('bg-music');
+    const icon = document.getElementById('music-icon');
+    const statusText = document.getElementById('music-status');
+    const iconBg = document.getElementById('music-icon-bg');
+
+    function primeMusic() {
+        if (music.readyState < 2) {
+            music.load();
+        }
     }
 
-    // Render
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<App />);
-  </script>
+    function toggleMusic() {
+        if (music.paused) {
+            music.play();
+            icon.classList.replace('fa-play', 'fa-pause');
+            statusText.innerText = "Now Playing";
+            iconBg.classList.add('playing-pulse');
+        } else {
+            music.pause();
+            icon.classList.replace('fa-pause', 'fa-play');
+            statusText.innerText = "Music Paused";
+            iconBg.classList.remove('playing-pulse');
+        }
+    }
+</script>
+
 </body>
 </html>
