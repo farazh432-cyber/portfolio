@@ -105,7 +105,7 @@
             gap: 12px;
             cursor: pointer;
             z-index: 9999;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             backdrop-filter: blur(10px);
         }
@@ -118,13 +118,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .music-text {
-            font-weight: 800;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
         }
 
         .coming-soon {
@@ -182,7 +175,6 @@
             margin-top: 50px;
             padding-bottom: 30px;
             opacity: 0.7;
-            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -193,15 +185,15 @@
 </audio>
 
 <div id="music-toggle" onclick="toggleMusic()">
-    <div class="music-btn-icon" id="music-icon-bg">
+    <div class="music-btn-icon">
         <i id="music-icon" class="fas fa-play" style="font-size: 0.8rem; margin-left: 2px;"></i>
     </div>
-    <span class="music-text" id="music-status">Play Song</span>
+    <span id="music-status" style="font-weight: 800; font-size: 0.85rem; text-transform: uppercase;">Play Song</span>
 </div>
 
 <div class="container">
     <div class="hero">
-        <img src="https://i.imgur.com/vH97Z93.png" alt="Steve 3D" class="profile-img">
+        <img src="https://files.catbox.moe/p95f70.png" alt="Steve 3D" class="profile-img">
         
         <h1>Classical_Ladder</h1>
         <p style="font-weight: bold; font-size: 1.2rem; opacity: 0.9;">Web Developer • YouTube Creator • MC Specialist</p>
