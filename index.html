@@ -3,157 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classical_Ladder Portfolio</title>
+    <title>Classical_Ladder | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary-red: #ff4b2b;
             --bg-red-glow: #b22222; 
             --bg-dark-red: #4a0000;
-            --card-bg: rgba(0, 0, 0, 0.6);
+            --card-bg: rgba(0, 0, 0, 0.7);
             --text-main: #ffffff;
         }
 
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: radial-gradient(circle, var(--bg-red-glow) 0%, var(--bg-dark-red) 100%);
             background-attachment: fixed;
             color: var(--text-main);
-            overflow-x: hidden;
             display: flex;
             justify-content: center;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         .container {
             width: 90%;
-            max-width: 1000px;
-            padding: 40px 0;
+            max-width: 900px;
+            padding: 60px 0;
             text-align: center;
         }
 
-        .hero {
-            animation: fadeIn 1.5s ease-out;
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        /* THE 3D STEVE EFFECT */
+        /* THE 3D STEVE POP-OUT EFFECT */
         .profile-img {
-            width: 250px; 
+            width: 240px; 
             height: auto;
-            margin-bottom: -10px; 
-            filter: drop-shadow(0 0 20px rgba(255, 75, 43, 0.5)) drop-shadow(0 15px 25px rgba(0, 0, 0, 0.8));
+            margin-bottom: -10px;
+            /* Double shadow for the 'SliceHosting' look */
+            filter: drop-shadow(0 0 20px rgba(255, 75, 43, 0.5)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.9));
             animation: float3D 4s ease-in-out infinite;
-            object-fit: contain;
             position: relative;
             z-index: 10;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
         }
 
         h1 {
             font-size: 3.5rem;
             margin: 10px 0;
-            text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+            text-shadow: 2px 4px 15px rgba(0,0,0,0.6);
+            letter-spacing: -1px;
+        }
+
+        .sub-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
         }
 
         .badge-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
         }
 
         .badge {
             background: var(--card-bg);
             padding: 10px 20px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            font-weight: bold;
-        }
-
-        .coming-soon {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 15px;
-            margin-top: 20px;
+            border-radius: 50px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
+            font-size: 0.85rem;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .project {
-            margin: 20px 0;
-            padding: 15px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.05);
+        .project-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .btn {
             display: inline-block;
             margin: 10px;
-            padding: 15px 30px;
+            padding: 14px 28px;
             text-decoration: none;
             color: #fff;
             background: var(--primary-red);
             border-radius: 12px;
-            font-weight: bold;
-            box-shadow: 0 4px 0px #a32a15;
-            transition: 0.3s;
+            font-weight: 800;
+            box-shadow: 0 5px 0px #a32a15;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 7px 0px #a32a15;
+        }
+
+        .btn:active {
+            transform: translateY(3px);
+            box-shadow: 0 2px 0px #a32a15;
         }
 
         @keyframes float3D { 
-            0%, 100% { transform: translateY(0) rotate(-1deg); } 
-            50% { transform: translateY(-20px) rotate(1deg); } 
+            0%, 100% { transform: translateY(0) rotate(-1.5deg); } 
+            50% { transform: translateY(-20px) rotate(1.5deg); } 
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        footer {
-            margin-top: 50px;
-            opacity: 0.7;
+        #music-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: rgba(0,0,0,0.9);
+            border: 2px solid var(--primary-red);
+            padding: 12px 22px;
+            border-radius: 50px;
+            cursor: pointer;
+            color: white;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="hero">
-        <img src="png-clipart-minecraft-pocket-edition-video-games-coloring-book-teen-gaming-night-minecraft-character-game-child-thumbnail.png" alt="Steve 3D" class="profile-img">
-        
-        <h1>Classical_Ladder</h1>
-        <p style="font-weight: bold; font-size: 1.2rem;">Web Developer • YouTube Creator • MC Specialist</p>
-        
-        <div class="badge-container">
-            <div class="badge"><i class="fas fa-code"></i> Developer</div>
-            <div class="badge"><i class="fas fa-cube"></i> Minecraft</div>
-            <div class="badge"><i class="fab fa-youtube"></i> YouTuber</div>
-        </div>
-    </div>
+<audio id="bg-music" loop>
+    <source src="https://files.catbox.moe/uihhgv.mp3" type="audio/mpeg">
+</audio>
 
-    <div class="coming-soon">
-        <h3>My Projects</h3>
-        <div class="project">
-            <h4>Galaxy Cash Bot</h4>
-            <p>A custom-built Discord economy bot inspired by OWO.</p>
-        </div>
-        <div class="project">
-            <h4>Galacious SMP</h4>
-            <p>Custom Minecraft SMP with unique gameplay features.</p>
-        </div>
-    </div>
-
-    <div style="margin-top: 50px; background: rgba(0, 0, 0, 0.8); padding: 40px; border-radius: 25px; border: 1px solid var(--primary-red);">
-        <h2 style="color: var(--primary-red);">Contact Me</h2>
-        <a href="https://youtube.com/@classical_ladder" class="btn">YouTube Channel</a>
-        <div class="btn" style="background: #5865F2;">Discord: shadow_devs.</div>
-    </div>
-
-    <footer>
-        <p>© 2026 Classical_Ladder</p>
-    </footer>
+<div id="music-toggle" onclick="toggleMusic()">
+    <i id="music-icon" class="fas fa-play"></i> <span id="music-text">PLAY MUSIC</span>
 </div>
 
-</body>
-</html>
+<div class="container">
+    <div class="hero">
+        <img src="steve.png" alt="Steve 3D" class="profile-img">
+        <h1>Classical_Ladder</h1>
+        <p class="sub-text">Web Developer • YouTube Creator • MC Specialist</p>
+        
+        <div class="badge-container">
+            <div class="badge"><i class="fas fa-code"></i> DEVELOPER</div>
+            <div class="badge"><i class="fas fa-cube"></i> MINECRAFT</div>
+            <div class="badge"><i class="fab fa-youtube"></i> YOUTUBER</div>
+        </div>
+    </div>
+
+    <div class="project-card">
+        <h2 style="color: var(--primary-red); margin-top: 0;">Featured Projects</h2>
+        <p style="opacity: 0.8; margin-bottom: 20px;">Working on high-impact Discord bots and Minecraft server administration.</p>
+        <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+            <div class="badge" style="background: rgba(255,255,255,0.05);">Galaxy Cash Bot</div>
+            <div class="badge" style="background: rgba(255,255,255,0.05);">Glacious SMP</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+        <a href="https://youtube.com/@classical_ladder" target="_blank" class="btn"><i class="fab fa-youtube"></i> YouTube</a>
+        <div class="btn" style="background: #5865F2; cursor: default;"><i class="fab fa-discord"></i> shadow
