@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <canvas id="skin_container" width="300" height="400"></canvas>
+
+<script src="https://unpkg.com/skinview3d"></script>
+<script>
+    const skinViewer = new skinview3d.SkinViewer({
+        canvas: document.getElementById("skin_container"),
+        width: 300,
+        height: 400,
+        skin: "https://minotar.net/skin/Steve"
+    });
+
+    skinViewer.animation = new skinview3d.WalkingAnimation();
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classical_Ladder Portfolio</title>
