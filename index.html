@@ -44,10 +44,9 @@
 
         /* THE 3D STEVE EFFECT */
         .profile-img {
-            width: 200px; /* Bigger size for 3D look */
+            width: 220px; 
             height: auto;
-            margin-bottom: -15px; /* Pulls text closer to feet */
-            /* Double shadow: Red glow + Dark depth */
+            margin-bottom: -10px; 
             filter: drop-shadow(0 0 20px rgba(255, 75, 43, 0.5)) drop-shadow(0 15px 15px rgba(0, 0, 0, 0.7));
             animation: float3D 4s ease-in-out infinite;
             object-fit: contain;
@@ -57,7 +56,7 @@
         }
 
         .profile-img:hover {
-            transform: scale(1.05); /* Slight grow on hover */
+            transform: scale(1.1);
             filter: drop-shadow(0 0 30px rgba(255, 75, 43, 0.8)) drop-shadow(0 20px 20px rgba(0, 0, 0, 0.8));
         }
 
@@ -111,11 +110,6 @@
             backdrop-filter: blur(10px);
         }
 
-        #music-toggle:hover {
-            transform: scale(1.05) translateY(-5px);
-            border-color: white;
-        }
-
         .music-btn-icon {
             width: 30px;
             height: 30px;
@@ -124,7 +118,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: 0.3s;
         }
 
         .music-text {
@@ -134,16 +127,6 @@
             text-transform: uppercase;
         }
 
-        .playing-pulse {
-            animation: pulse 1.5s infinite;
-            background: var(--music-green) !important;
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0px rgba(46, 204, 113, 0.7); }
-            100% { box-shadow: 0 0 0 15px rgba(46, 204, 113, 0); }
-        }
-
         .coming-soon {
             background: var(--card-bg);
             padding: 40px;
@@ -151,7 +134,6 @@
             margin-top: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
-            animation: fadeIn 1.5s ease-out;
         }
 
         .project {
@@ -185,22 +167,10 @@
             background: var(--primary-red);
             border-radius: 12px;
             font-weight: bold;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.3s;
             box-shadow: 0 4px 0px #a32a15;
         }
 
-        .btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            filter: brightness(1.1);
-            box-shadow: 0 10px 20px rgba(255, 75, 43, 0.5);
-        }
-
-        .btn:active {
-            transform: translateY(-2px);
-            box-shadow: 0 2px 0px #a32a15;
-        }
-
-        /* UPDATED ANIMATION: Floating with slight tilt */
         @keyframes float3D { 
             0%, 100% { transform: translateY(0) rotate(-1deg); } 
             50% { transform: translateY(-20px) rotate(2deg); } 
@@ -213,7 +183,6 @@
             padding-bottom: 30px;
             opacity: 0.7;
             font-size: 0.9rem;
-            letter-spacing: 0.5px;
         }
     </style>
 </head>
@@ -223,7 +192,7 @@
     <source src="https://files.catbox.moe/uihhgv.mp3" type="audio/mpeg">
 </audio>
 
-<div id="music-toggle" onclick="toggleMusic()" onmouseover="primeMusic()">
+<div id="music-toggle" onclick="toggleMusic()">
     <div class="music-btn-icon" id="music-icon-bg">
         <i id="music-icon" class="fas fa-play" style="font-size: 0.8rem; margin-left: 2px;"></i>
     </div>
@@ -232,7 +201,7 @@
 
 <div class="container">
     <div class="hero">
-        <img src="https://www.pngarts.com/files/3/Minecraft-Steve-PNG-Transparent-Image.png" alt="Steve 3D" class="profile-img">
+        <img src="https://i.imgur.com/vH97Z93.png" alt="Steve 3D" class="profile-img">
         
         <h1>Classical_Ladder</h1>
         <p style="font-weight: bold; font-size: 1.2rem; opacity: 0.9;">Web Developer • YouTube Creator • MC Specialist</p>
@@ -255,21 +224,19 @@
 
         <div class="project">
             <h4><i class="fas fa-robot"></i> Galaxy Cash Bot</h4>
-            <p>A custom-built Discord economy bot inspired by OWO, featuring advanced currency systems, rewards, and automation.</p>
+            <p>A custom-built Discord economy bot inspired by OWO.</p>
         </div>
 
         <div class="project">
             <h4><i class="fas fa-cube"></i> Galacious SMP</h4>
-            <p>A custom Minecraft SMP server with unique gameplay, community features, and events.</p>
+            <p>A custom Minecraft SMP server with unique gameplay features.</p>
         </div>
-
-        <p style="margin-top: 20px; opacity: 0.8;">✨ More projects coming soon...</p>
     </div>
 
     <div class="contact-box">
         <h2 style="color: var(--primary-red); margin-top: 0;">Contact Me</h2>
         <a href="https://youtube.com/@classical_ladder" target="_blank" class="btn"><i class="fab fa-youtube"></i> YouTube Channel</a>
-        <div class="btn" style="background: #5865F2; cursor: pointer;"><i class="fab fa-discord"></i> Discord: shadow_devs.</div>
+        <div class="btn" style="background: #5865F2;"><i class="fab fa-discord"></i> Discord: shadow_devs.</div>
     </div>
 
     <footer>
@@ -281,25 +248,16 @@
     const music = document.getElementById('bg-music');
     const icon = document.getElementById('music-icon');
     const statusText = document.getElementById('music-status');
-    const iconBg = document.getElementById('music-icon-bg');
-
-    function primeMusic() {
-        if (music.readyState < 2) {
-            music.load();
-        }
-    }
 
     function toggleMusic() {
         if (music.paused) {
             music.play();
             icon.classList.replace('fa-play', 'fa-pause');
             statusText.innerText = "Now Playing";
-            iconBg.classList.add('playing-pulse');
         } else {
             music.pause();
             icon.classList.replace('fa-pause', 'fa-play');
             statusText.innerText = "Music Paused";
-            iconBg.classList.remove('playing-pulse');
         }
     }
 </script>
