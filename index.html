@@ -39,15 +39,25 @@
         .hero {
             animation: fadeIn 1.5s ease-out;
             margin-bottom: 50px;
+            position: relative;
         }
 
+        /* UPDATED: THE 3D STEVE EFFECT */
         .profile-img {
-            width: 140px;
-            height: 140px;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
-            animation: float 3s ease-in-out infinite;
+            width: 240px; /* Increased size for the 3D look */
+            height: auto;
+            margin-bottom: -15px;
+            /* Double shadow for depth + red glow */
+            filter: drop-shadow(0 0 20px rgba(255, 75, 43, 0.5)) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8));
+            animation: float3D 4s ease-in-out infinite;
             object-fit: contain;
+            position: relative;
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
         }
 
         h1 {
@@ -187,7 +197,12 @@
             box-shadow: 0 2px 0px #a32a15;
         }
 
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        /* UPDATED ANIMATION: 3D Float with slight tilt */
+        @keyframes float3D { 
+            0%, 100% { transform: translateY(0) rotate(-1.5deg); } 
+            50% { transform: translateY(-20px) rotate(1.5deg); } 
+        }
+        
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         footer {
@@ -214,7 +229,7 @@
 
 <div class="container">
     <div class="hero">
-        <img src="https://mcicons.ccleaf.com/assets/20.%20Blocks/18.%20Decoration/Ladder.png" alt="Ladder" class="profile-img">
+        <img src="steve.png" alt="Steve 3D" class="profile-img">
         <h1>Classical_Ladder</h1>
         <p style="font-weight: bold; font-size: 1.2rem;">Web Developer • YouTube Creator • MC Specialist</p>
         
