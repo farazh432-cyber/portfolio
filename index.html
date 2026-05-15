@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classical Ladder | DC Developer</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+    body{background:linear-gradient(135deg,#0c0c0c 0%,#1a1a2e 50%,#16213e 100%);color:#fff;overflow-x:hidden}
+    .container{max-width:1200px;margin:0 auto;padding:20px}
+    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at center,#00d4ff20 0%,transparent 70%);animation:pulse 4s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.8}}
+    h1{font-size:clamp(3rem,8vw,7rem);font-weight:900;background:linear-gradient(45deg,#00d4ff,#ff6b6b,#4ecdc4);background-size:300% 300%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gradient 3s ease infinite}
+    @keyframes gradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .subtitle{font-size:clamp(1.2rem,3vw,2rem);margin:20px 0;color:#b8b8b8;animation:float 6s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .btn{display:inline-block;padding:15px 40px;background:linear-gradient(45deg,#00d4ff,#0099cc);border:none;border-radius:50px;font-size:1.2rem;font-weight:600;cursor:pointer;transition:all 0.3s ease;text-decoration:none;color:#fff;box-shadow:0 10px 30px rgba(0,212,255,0.3)}
+    .btn:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,212,255,0.4)}
+    section{min-height:80vh;padding:80px 20px;display:flex;align-items:center}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
+    .card{background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:30px;transition:all 0.4s ease;cursor:pointer}
+    .card:hover{transform:translateY(-15px) scale(1.02);background:rgba(255,255,255,0.1);box-shadow:0 30px 60px rgba(0,0,0,0.5)}
+    .skills-bar{background:rgba(255,255,255,0.1);height:10px;border-radius:10px;overflow:hidden;margin:10px 0}
+    .skills-progress{height:100%;background:linear-gradient(90deg,#00d4ff,#ff6b6b);border-radius:10px;transition:width 2s ease}
+    .particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1}
+    .particle{position:absolute;background:radial-gradient(circle,#00d4ff20,#ff6b6b10);border-radius:50%;animation:float 15s linear infinite}
+    @keyframes float{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh) rotate(360deg);opacity:0}}
+    .contact-form{max-width:600px;margin:0 auto}
+    input,textarea{width:100%;padding:15px;border:1px solid rgba(255,255,255,0.2);border-radius:10px;background:rgba(255,255,255,0.05);color:#fff;font-size:1rem;margin-bottom:20px;transition:all 0.3s}
+    input:focus,textarea:focus{outline:none;border-color:#00d4ff;box-shadow:0 0 20px rgba(0,212,255,0.3)}
+    ::placeholder{color:#888}
+    @media(max-width:768px){.container{padding:10px}.hero{padding:20px}}
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <div id="particles" class="particles"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    // Animated Particles
+    function Particles() {
+      useEffect(() => {
+        const particlesContainer = document.getElementById('particles');
+        const createParticle = () => {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          const size = Math.random() * 6 + 2;
+          particle.style.width = particle.style.height = size + 'px';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+          particle.style.animationDelay = Math.random() * 5 + 's';
+          particlesContainer.appendChild(particle);
+          setTimeout(() => particle.remove(), 25000);
+        };
+        const interval = setInterval(createParticle, 800);
+        return () => clearInterval(interval);
+      }, []);
+      return null;
+    }
+
+    // Main App
+    function App() {
+      const [activeTab, setActiveTab] = useState('home');
+
+      return (
+        <div>
+          <Particles />
+          
+          {/* Hero */}
+          <section className="hero">
+            <div className="container">
+              <h1>Classical Ladder</h1>
+              <p className="subtitle">DC Developer | Web Developer | Full-Stack Architect</p>
+              <a href="#contact" className="btn">Get In Touch</a>
+            </div>
+          </section>
+
+          {/* Services */}
+          <section id="services">
+            <div className="container">
+              <h2 style={{textAlign:'center',fontSize:'3rem',marginBottom:'60px',background:'linear-gradient(45deg,#00d4ff,#ff6b6b)',WebkitBackgroundClip:'text',backgroundClip:'text',WebkitTextFillColor:'transparent'}}>
+                What I Do
+              </h2>
+              <div className="grid">
+                <div className="card">
+                  <h3 style={{fontSize:'1.8rem',marginBottom:'20px',color:'#00d4ff'}}>DC Development</h3>
+                  <p>Custom Discord bots, automation tools, and server management solutions.</p>
+                </div>
+                <div className="card">
+                  <h3 style={{fontSize:'1.8rem',marginBottom:'20px',color:'#ff6b6b'}}>Web Development</h3>
+                  <p>Modern, responsive websites and web applications with cutting-edge tech.</p>
+                </div>
+                <div className="card">
+                  <h3 style={{fontSize:'1.8rem',marginBottom:'20px',color:'#4ecdc4'}}>Full-Stack</h3>
+                  <p>Complete solutions from frontend UI to robust backend systems.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Skills */}
+          <section id="skills" style={{background:'rgba(0,0,0,0.3)'}}>
+            <div className="container">
+              <h2 style={{textAlign:'center',fontSize:'3rem',marginBottom:'60px',background:'linear-gradient(45deg,#00d4ff,#ff6b6b)',WebkitBackgroundClip:'text',backgroundClip:'text',WebkitTextFillColor:'transparent'}}>
+                Skills
+              </h2>
+              <div className="grid">
+                <div className="card">
+                  <h3 style={{fontSize:'1.8rem',marginBottom:'20px'}}>React / Next.js</h3>
+                  <div className="skills-bar"><div className="skills-progress" style={{width:'95%'}}></div></div>
+                </div>
+                <div className="card">
+                  <h3 style={{fontSize:'1.8rem',marginBottom:'20px'}}>Node.js</h3>
+                  <div className="skills-bar"><div className="skills-progress" style={{width:'90%'}}></div></div>
+                </div>
+                <div className="card">
+                  <h3 style={{fontSize:'1.8rem',marginBottom:'20px'}}>Discord.js</h3>
+                  <div className="skills-bar"><div className="skills-progress" style={{width:'92%'}}></div></div>
+                </div>
+                <div className="card">
+                  <h3 style={{fontSize:'1.8rem',marginBottom:'20px'}}>TypeScript</h3>
+                  <div className="skills-bar"><div className="skills-progress" style={{width:'88%'}}></div></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Contact */}
+          <section id="contact">
+            <div className="container">
+              <h2 style={{textAlign:'center',fontSize:'3rem',marginBottom:'60px',background:'linear-gradient(45deg,#00d4ff,#ff6b6b)',WebkitBackgroundClip:'text',backgroundClip:'text',WebkitTextFillColor:'transparent'}}>
+                Let's Work Together
+              </h2>
+              <form className="contact-form">
+                <input type="text" placeholder="Your Name" required />
+                <input type="email" placeholder="Your Email" required />
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit" className="btn" style={{width:'100%',fontSize:'1.3rem'}}>Send Message</button>
+              </form>
+              <div style={{textAlign:'center',marginTop:'40px'}}>
+                <p style={{color:'#b8b8b8',fontSize:'1.2rem'}}>
+                  📧 hello@classicalladder.com | 🐦 @classicalladder
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      );
+    }
+
+    // Render
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
