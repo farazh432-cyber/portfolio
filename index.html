@@ -41,13 +41,13 @@
             position: relative;
         }
 
-        /* 3D STEVE STYLING */
+        /* THE 3D STEVE EFFECT */
         .profile-img {
-            width: 240px; /* Large for that 'pop-out' feel */
+            width: 250px; /* Big and bold like SliceHosting */
             height: auto;
-            margin-bottom: -15px; 
-            /* Double shadow for 3D depth and red glow */
-            filter: drop-shadow(0 0 25px rgba(255, 75, 43, 0.4)) drop-shadow(0 20px 20px rgba(0, 0, 0, 0.8));
+            margin-bottom: -10px; 
+            /* High-quality 3D shadows */
+            filter: drop-shadow(0 0 20px rgba(255, 75, 43, 0.4)) drop-shadow(0 15px 25px rgba(0, 0, 0, 0.8));
             animation: float3D 4s ease-in-out infinite;
             object-fit: contain;
             position: relative;
@@ -121,11 +121,6 @@
             transition: 0.3s;
         }
 
-        .project:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.1);
-        }
-
         .btn {
             display: inline-block;
             margin: 10px;
@@ -140,8 +135,8 @@
         }
 
         @keyframes float3D { 
-            0%, 100% { transform: translateY(0) rotate(-1.5deg); } 
-            50% { transform: translateY(-25px) rotate(2deg); } 
+            0%, 100% { transform: translateY(0) rotate(-1deg); } 
+            50% { transform: translateY(-20px) rotate(1deg); } 
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -168,7 +163,7 @@
 
 <div class="container">
     <div class="hero">
-        <img src="https://files.catbox.moe/o3d3s4.png" alt="Steve 3D" class="profile-img">
+        <img src="https://instasize-image-processing.s3.amazonaws.com/0c9ee0945e0879a228d1521b541b2a0ccd7387e440099056b803f0149441bc25.png" alt="Steve 3D" class="profile-img">
         
         <h1>Classical_Ladder</h1>
         <p style="font-weight: bold; font-size: 1.2rem; opacity: 0.9;">Web Developer • YouTube Creator • MC Specialist</p>
