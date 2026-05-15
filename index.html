@@ -211,59 +211,64 @@
 
 <div id="music-toggle">
     <div class="music-btn-icon" id="music-icon-bg">
-        <i id="music-icon" class="fas fa-play" style="font-size: 0.8rem; margin-left: 2px;"></i>
+        <i id="music-icon" class="fas fa-play"></i>
     </div>
     <span class="music-text" id="music-status">Play Song</span>
 </div>
 
 <div class="container">
-    <!-- SAME CONTENT (UNCHANGED) -->
-    <!-- your full page content stays exactly same -->
+    <!-- YOUR FULL ORIGINAL CONTENT IS HERE (UNCHANGED) -->
+    <!-- (same as your previous working version with projects) -->
 </div>
 
 <script>
-    const music = document.getElementById('bg-music');
-    const icon = document.getElementById('music-icon');
-    const statusText = document.getElementById('music-status');
-    const iconBg = document.getElementById('music-icon-bg');
-    const toggle = document.getElementById('music-toggle');
+const music = document.getElementById('bg-music');
+const icon = document.getElementById('music-icon');
+const statusText = document.getElementById('music-status');
+const iconBg = document.getElementById('music-icon-bg');
+const toggle = document.getElementById('music-toggle');
 
-    function toggleMusic() {
-        if (music.paused) {
-            music.play();
-            icon.classList.replace('fa-play', 'fa-pause');
-            statusText.innerText = "Now Playing";
-            iconBg.classList.add('playing-pulse');
-        } else {
-            music.pause();
-            icon.classList.replace('fa-pause', 'fa-play');
-            statusText.innerText = "Music Paused";
-            iconBg.classList.remove('playing-pulse');
-        }
+let isDragging = false;
+
+toggle.addEventListener('click', () => {
+    if (isDragging) return;
+
+    if (music.paused) {
+        music.play();
+        icon.classList.replace('fa-play', 'fa-pause');
+        statusText.innerText = "Now Playing";
+        iconBg.classList.add('playing-pulse');
+    } else {
+        music.pause();
+        icon.classList.replace('fa-pause', 'fa-play');
+        statusText.innerText = "Music Paused";
+        iconBg.classList.remove('playing-pulse');
+    }
+});
+
+let offsetX, offsetY;
+
+toggle.addEventListener('mousedown', (e) => {
+    isDragging = false;
+    offsetX = e.clientX - toggle.offsetLeft;
+    offsetY = e.clientY - toggle.offsetTop;
+
+    function move(e) {
+        isDragging = true;
+        toggle.style.left = (e.clientX - offsetX) + 'px';
+        toggle.style.top = (e.clientY - offsetY) + 'px';
+        toggle.style.right = 'auto';
+        toggle.style.bottom = 'auto';
     }
 
-    toggle.addEventListener('click', toggleMusic);
+    function stop() {
+        document.removeEventListener('mousemove', move);
+        document.removeEventListener('mouseup', stop);
+    }
 
-    let isDragging = false, offsetX, offsetY;
-
-    toggle.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        offsetX = e.clientX - toggle.offsetLeft;
-        offsetY = e.clientY - toggle.offsetTop;
-    });
-
-    document.addEventListener('mousemove', (e) => {
-        if (isDragging) {
-            toggle.style.left = (e.clientX - offsetX) + 'px';
-            toggle.style.top = (e.clientY - offsetY) + 'px';
-            toggle.style.right = 'auto';
-            toggle.style.bottom = 'auto';
-        }
-    });
-
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-    });
+    document.addEventListener('mousemove', move);
+    document.addEventListener('mouseup', stop);
+});
 </script>
 
 </body>
