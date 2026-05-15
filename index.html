@@ -13,7 +13,6 @@
             --card-bg: rgba(0, 0, 0, 0.6);
             --text-main: #ffffff;
             --music-green: #2ecc71;
-            --discord-blue: #5865F2;
         }
 
         body {
@@ -42,22 +41,17 @@
             position: relative;
         }
 
-        /* THE 3D STEVE EFFECT */
+        /* 3D STEVE STYLING */
         .profile-img {
-            width: 220px; 
+            width: 240px; /* Large for that 'pop-out' feel */
             height: auto;
-            margin-bottom: -10px; 
-            filter: drop-shadow(0 0 20px rgba(255, 75, 43, 0.5)) drop-shadow(0 15px 15px rgba(0, 0, 0, 0.7));
+            margin-bottom: -15px; 
+            /* Double shadow for 3D depth and red glow */
+            filter: drop-shadow(0 0 25px rgba(255, 75, 43, 0.4)) drop-shadow(0 20px 20px rgba(0, 0, 0, 0.8));
             animation: float3D 4s ease-in-out infinite;
             object-fit: contain;
             position: relative;
             z-index: 10;
-            transition: 0.3s ease;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.1);
-            filter: drop-shadow(0 0 30px rgba(255, 75, 43, 0.8)) drop-shadow(0 20px 20px rgba(0, 0, 0, 0.8));
         }
 
         h1 {
@@ -110,16 +104,6 @@
             backdrop-filter: blur(10px);
         }
 
-        .music-btn-icon {
-            width: 30px;
-            height: 30px;
-            background: var(--primary-red);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         .coming-soon {
             background: var(--card-bg);
             padding: 40px;
@@ -142,15 +126,6 @@
             background: rgba(255,255,255,0.1);
         }
 
-        .contact-box {
-            margin-top: 50px;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 40px;
-            border-radius: 25px;
-            border: 1px solid var(--primary-red);
-            backdrop-filter: blur(20px);
-        }
-
         .btn {
             display: inline-block;
             margin: 10px;
@@ -165,8 +140,8 @@
         }
 
         @keyframes float3D { 
-            0%, 100% { transform: translateY(0) rotate(-1deg); } 
-            50% { transform: translateY(-20px) rotate(2deg); } 
+            0%, 100% { transform: translateY(0) rotate(-1.5deg); } 
+            50% { transform: translateY(-25px) rotate(2deg); } 
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -185,7 +160,7 @@
 </audio>
 
 <div id="music-toggle" onclick="toggleMusic()">
-    <div class="music-btn-icon">
+    <div style="width: 30px; height: 30px; background: var(--primary-red); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
         <i id="music-icon" class="fas fa-play" style="font-size: 0.8rem; margin-left: 2px;"></i>
     </div>
     <span id="music-status" style="font-weight: 800; font-size: 0.85rem; text-transform: uppercase;">Play Song</span>
@@ -193,7 +168,7 @@
 
 <div class="container">
     <div class="hero">
-        <img src="https://files.catbox.moe/p95f70.png" alt="Steve 3D" class="profile-img">
+        <img src="https://files.catbox.moe/o3d3s4.png" alt="Steve 3D" class="profile-img">
         
         <h1>Classical_Ladder</h1>
         <p style="font-weight: bold; font-size: 1.2rem; opacity: 0.9;">Web Developer • YouTube Creator • MC Specialist</p>
@@ -208,31 +183,24 @@
     <div class="coming-soon">
         <i class="fas fa-folder-open" style="font-size: 2rem; color: var(--primary-red); margin-bottom: 10px;"></i>
         <h3>My Projects</h3>
-
         <div class="project">
             <h4><i class="fab fa-discord"></i> Discord Moderation</h4>
-            <p>Experienced in managing and moderating Discord communities professionally.</p>
+            <p>Managing communities with professional tools and custom scripts.</p>
         </div>
-
         <div class="project">
             <h4><i class="fas fa-robot"></i> Galaxy Cash Bot</h4>
-            <p>A custom-built Discord economy bot inspired by OWO.</p>
-        </div>
-
-        <div class="project">
-            <h4><i class="fas fa-cube"></i> Galacious SMP</h4>
-            <p>A custom Minecraft SMP server with unique gameplay features.</p>
+            <p>Economy bot featuring advanced rewards and automation.</p>
         </div>
     </div>
 
-    <div class="contact-box">
+    <div style="margin-top: 50px; background: rgba(0, 0, 0, 0.8); padding: 40px; border-radius: 25px; border: 1px solid var(--primary-red); backdrop-filter: blur(20px);">
         <h2 style="color: var(--primary-red); margin-top: 0;">Contact Me</h2>
-        <a href="https://youtube.com/@classical_ladder" target="_blank" class="btn"><i class="fab fa-youtube"></i> YouTube Channel</a>
-        <div class="btn" style="background: #5865F2;"><i class="fab fa-discord"></i> Discord: shadow_devs.</div>
+        <a href="https://youtube.com/@classical_ladder" target="_blank" class="btn"><i class="fab fa-youtube"></i> YouTube</a>
+        <div class="btn" style="background: #5865F2;"><i class="fab fa-discord"></i> shadow_devs.</div>
     </div>
 
     <footer>
-        <p>© 2026 Classical_Ladder | Dev</p>
+        <p>© 2026 Classical_Ladder | Web Dev</p>
     </footer>
 </div>
 
