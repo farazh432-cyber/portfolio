@@ -179,4 +179,28 @@
 
     <div style="margin-top: 40px;">
         <a href="https://youtube.com/@classical_ladder" target="_blank" class="btn"><i class="fab fa-youtube"></i> YouTube</a>
-        <div class="btn" style="background: #5865F2; cursor: default;"><i class="fab fa-discord"></i> shadow
+        <div class="btn" style="background: #5865F2; cursor: default;"><i class="fab fa-discord"></i> shadow_devs.</div>
+    </div>
+</div>
+
+<script>
+    const music = document.getElementById('bg-music');
+    const icon = document.getElementById('music-icon');
+    const text = document.getElementById('music-text');
+
+    function toggleMusic() {
+        if (music.paused) {
+            music.play();
+            icon.className = 'fas fa-pause';
+            text.innerText = 'PAUSE';
+        } else {
+            music.pause();
+            icon.className = 'fas fa-play';
+            text.innerText = 'PLAY MUSIC';
+        }
+    }
+</script>
+
+</body>
+</html>
+
